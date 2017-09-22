@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import MiniDrawer from './containers/MiniDrawer/index'
+import './App.css'
 
 const App = ({ children }) => (
-  <div>
-    <p>test</p>
+  <MiniDrawer>
     {children}
-  </div>
+  </MiniDrawer>
 )
 
 App.propTypes = {

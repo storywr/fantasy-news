@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute, Redirect } from 'react-router'
 
-import App from './containers/App/index'
+import App from './App'
 
 export default function (store) {
   return (
