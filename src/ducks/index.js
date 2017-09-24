@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
+import players from './players'
+
 export default combineReducers({
-    routing: routerReducer,
+    players,
+    routing: routerReducer
 })

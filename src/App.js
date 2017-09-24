@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
@@ -16,6 +16,9 @@ import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import PlayerCard from './components/PlayerCard/index'
 import Grid from 'material-ui/Grid'
+import {connect} from 'react-redux'
+import { bindActionCreators, compose } from 'redux'
+import { fetchPlayers } from  './ducks/players.js'
 
 const drawerWidth = 240;
 
@@ -56,8 +59,12 @@ const styles = theme => ({
   },
 });
 
-function App(props) {
-  const { classes } = props
+export class App extends Component {
+  componentDidMount() {
+    this.props.fetchPlayers()
+  }
+  render() {
+  const { classes } = this.props
   return (
     <div className={classes.root}>
       <div className={classes.appFrame}>
@@ -109,19 +116,22 @@ function App(props) {
                 <PlayerCard />
               </Grid>
             </Grid>
-            {props.children}
+            {this.props.children}
           </Typography>
         </main>
       </div>
-    </div>  )
+    </div>
+  )
+  }
 }
 
-App.propTypes = {
-  children: PropTypes.node
+function mapStateToProps(state){
+  return {players: state.players}
 }
 
-App.defaultProps = {
-  children: null
-}
+const mapDispatchToProps = dispatch => bindActionCreators({ fetchPlayers }, dispatch)
 
-export default withStyles(styles)(App)
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps, mapDispatchToProps)
+)(App)

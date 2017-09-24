@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.15.4",
     "install": "^0.10.1",
+    "jsonp": "^0.2.1",
     "material-ui": "next",
     "material-ui-icons": "^1.0.0-beta.10",
     "react": "^15.6.1",
