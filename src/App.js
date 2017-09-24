@@ -14,6 +14,8 @@ import Divider from 'material-ui/Divider'
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
+import PlayerCard from './components/PlayerCard/index'
+import Grid from 'material-ui/Grid'
 
 const drawerWidth = 240;
 
@@ -21,8 +23,6 @@ const styles = theme => ({
   root: {
     width: '100%',
     height: '100vh',
-    marginTop: theme.spacing.unit * 3,
-    zIndex: 1,
     overflow: 'hidden',
   },
   appFrame: {
@@ -87,10 +87,28 @@ function App(props) {
                 primary='News'
               />
             </ListItem>
+            <ListItem button>
+              <ListItemText
+                primary='Rankings'
+              />
+            </ListItem>
+            <ListItem button>
+              <ListItemText
+                primary='ADP'
+              />
+            </ListItem>
           </List>
         </Drawer>
         <main className={classes.content}>
           <Typography type="body1" noWrap>
+            <Grid container spacing={40}>
+              <Grid item xs={6}>
+                <PlayerCard />
+              </Grid>
+              <Grid item xs={6}>
+                <PlayerCard />
+              </Grid>
+            </Grid>
             {props.children}
           </Typography>
         </main>
