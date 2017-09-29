@@ -16,7 +16,7 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case LIST:
-      return { ...state, players: { ...state.list, response: action.response } }
+      return { ...state, players: { ...state.players, response: action.response } }
 
     case FETCH_SINGLE:
       return { ...state, active: { ...state.active, id: action.id } }
@@ -33,7 +33,7 @@ export default function (state = initialState, action) {
 
 export const fetchPlayers = () => {
   return dispatch => {
-    return fetch('https://www70.myfantasyleague.com/2017/export?TYPE=players&DETAILS=&SINCE=&PLAYERS=&JSON=1')
+    return fetch('/api/players')
       .then(response => response.json())
       .then(players => dispatch({ type: LIST, players }))
       .catch(console.log)
