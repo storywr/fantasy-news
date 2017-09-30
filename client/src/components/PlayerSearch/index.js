@@ -10,6 +10,7 @@ import { withStyles } from 'material-ui/styles';
 import {connect} from 'react-redux'
 import { bindActionCreators, compose } from 'redux'
 import selectPlayerList from '../../ducks/players'
+import { browserHistory } from 'react-router'
 
 const styles = theme => ({
   container: {
@@ -96,9 +97,9 @@ export class PlayerSearch extends Component {
   }
   
   getSuggestionValue(suggestion) {
-    return suggestion.name;
+    browserHistory.push(`/players/${suggestion.id}`)
   }
-  
+
   getSuggestions(value) {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
@@ -133,8 +134,8 @@ export class PlayerSearch extends Component {
   handleChange = (event, { newValue }) => {
     this.setState({
       value: newValue,
-    });
-  };
+    })
+  }
 
   render() {
     const { classes } = this.props;
@@ -157,9 +158,9 @@ export class PlayerSearch extends Component {
         inputProps={{
           autoFocus: true,
           classes,
-          placeholder: 'Search for Player',
+          placeholder: 'Search for Player (Last Name, First Name)',
           value: this.state.value,
-          onChange: this.handleChange,
+          onChange: this.handleChange
         }}
       />
     );
