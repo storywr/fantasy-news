@@ -7,16 +7,13 @@ const FETCH_SINGLE_SUCCESS = 'FETCH_PLAYER_SUCCESS'
 // Reducer
 
 const initialState = {
-  players: {
-    player: {
-    }
-  }
+  players: []
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case LIST:
-      return { ...state, players: { ...state.players, response: action.response } }
+      return { ...state, players: { ...state.players, players: action.players.players.player } }
 
     case FETCH_SINGLE:
       return { ...state, active: { ...state.active, id: action.id } }
@@ -42,4 +39,4 @@ export const fetchPlayers = () => {
 
 // Selectors
 
-export const selectPlayerList = state => state.players.player
+export const selectPlayerList = state => state.players.players.players
