@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Grid from 'material-ui/Grid'
+import PlayerCard from '../PlayerCard/index'
 
 class PlayerProfile extends Component {
 
@@ -8,7 +10,14 @@ class PlayerProfile extends Component {
 
     return (
       <div>
-        <div>test</div>
+        <Grid container spacing={40}>
+          <Grid item xs={6}>
+            <PlayerCard />
+          </Grid>
+          <Grid item xs={6}>
+            <PlayerCard />
+          </Grid>
+        </Grid>
       </div>
     )
   }

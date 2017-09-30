@@ -110,12 +110,6 @@ export class App extends Component {
               <Grid item xs={12}>
                 <PlayerSearch />
               </Grid>
-              <Grid item xs={6}>
-                <PlayerCard />
-              </Grid>
-              <Grid item xs={6}>
-                <PlayerCard />
-              </Grid>
             </Grid>
             {this.props.children}
           </Typography>
