@@ -33,14 +33,14 @@ const styles = theme => ({
     listStyleType: 'none',
   },
   textField: {
-    width: '100%',
+    width: '100%'
   },
 });
 
 export class PlayerSearch extends Component {
   state = {
     value: '',
-    suggestions: this.props.players,
+    suggestions: this.props.players
   };
 
   renderInput(inputProps) {
@@ -63,8 +63,8 @@ export class PlayerSearch extends Component {
   }
   
   renderSuggestion(suggestion, { query, isHighlighted }) {
-    const matches = match(suggestion.label, query);
-    const parts = parse(suggestion.label, matches);
+    const matches = match(suggestion.name, query);
+    const parts = parse(suggestion.name, matches);
   
     return (
       <MenuItem selected={isHighlighted} component="div">
