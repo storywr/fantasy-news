@@ -72,7 +72,7 @@ export class App extends Component {
         <AppBar className={classes.appBar}>
           <Toolbar>
             <Typography type="title" color="inherit" noWrap>
-              Fantasy Football News
+              Fantasy Football Scout
             </Typography>
           </Toolbar>
         </AppBar>
@@ -130,7 +130,7 @@ export class App extends Component {
 }
 
 function mapStateToProps(state){
-  return {players: state.players}
+  return {players: state.players.players.players}
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchPlayers }, dispatch)
