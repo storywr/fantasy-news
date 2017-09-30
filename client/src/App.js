@@ -15,6 +15,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import PlayerCard from './components/PlayerCard/index'
+import PlayerSearch from './components/PlayerSearch/index'
 import Grid from 'material-ui/Grid'
 import {connect} from 'react-redux'
 import { bindActionCreators, compose } from 'redux'
@@ -109,6 +110,9 @@ export class App extends Component {
         <main className={classes.content}>
           <Typography type="body1" noWrap>
             <Grid container spacing={40}>
+              <Grid item xs={12}>
+                <PlayerSearch />
+              </Grid>
               <Grid item xs={6}>
                 <PlayerCard />
               </Grid>
