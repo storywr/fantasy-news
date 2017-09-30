@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 import TextField from 'material-ui/TextField';
@@ -7,6 +7,9 @@ import { MenuItem } from 'material-ui/Menu';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import { withStyles } from 'material-ui/styles';
+import {connect} from 'react-redux'
+import { bindActionCreators, compose } from 'redux'
+import selectPlayerList from '../../ducks/players'
 
 const suggestions = [
   { label: 'Afghanistan' },
@@ -146,7 +149,7 @@ const styles = theme => ({
   },
 });
 
-class PlayerSearch extends React.Component {
+export class PlayerSearch extends Component {
   state = {
     value: '',
     suggestions: [],
@@ -191,7 +194,7 @@ class PlayerSearch extends React.Component {
         inputProps={{
           autoFocus: true,
           classes,
-          placeholder: 'Search a country (start with a)',
+          placeholder: 'Search for Player',
           value: this.state.value,
           onChange: this.handleChange,
         }}
@@ -200,8 +203,9 @@ class PlayerSearch extends React.Component {
   }
 }
 
-PlayerSearch.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+const mapStateToProps = state => ({ players: state.players.players.players })
 
-export default withStyles(styles)(PlayerSearch);
+export default compose(
+  withStyles(styles),
+  connect(mapStateToProps)
+)(PlayerSearch)
