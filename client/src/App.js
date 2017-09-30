@@ -61,9 +61,6 @@ const styles = theme => ({
 });
 
 export class App extends Component {
-  componentDidMount() {
-    this.props.fetchPlayers()
-  }
   render() {
   const { classes } = this.props
   return (
@@ -126,6 +123,13 @@ export class App extends Component {
       </div>
     </div>
   )
+  }
+}
+
+App.enter = function onEnterApp(store) {
+  return ({ params }, replace, callback) => {
+    store.dispatch(fetchPlayers())
+      .then(() => callback())
   }
 }
 

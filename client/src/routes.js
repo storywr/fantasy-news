@@ -5,7 +5,7 @@ import App from './App'
 
 export default function (store) {
   return (
-    <Route location='history' path='/' component={App} >
+    <Route location='history' path='/' component={App} onEnter={App.enter(store)} >
     </Route>
   )
 }
