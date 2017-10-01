@@ -16,20 +16,29 @@ const styles = {
 
 function PlayerCard(props) {
   const classes = props.classes;
+  const name = props.player.name
+  const player = props.player.player
+
   return (
     <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="https://heavyeditorial.files.wordpress.com/2017/02/gettyimages-496454998.jpg?quality=65&strip=all&w=780&strip=all"
+          image={'https://usatftw.files.wordpress.com/2014/10/nfl_logo_new2.jpg?w=1000&h=750'}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography type="headline" component="h2">
-            Devonta Freeman
+            {props.player.name}
           </Typography>
           <Typography component="p">
-            RB, Atlanta Falcons
+            Age: {player.age}
+          </Typography>
+          <Typography component="p">
+            Height: {player.height}
+          </Typography>
+          <Typography component="p">
+            Weight: {player.weight}
           </Typography>
         </CardContent>
         <CardActions>

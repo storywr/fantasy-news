@@ -14,10 +14,7 @@ class PlayerProfile extends Component {
       <div>
         <Grid container spacing={40}>
           <Grid item xs={6}>
-            <PlayerCard />
-          </Grid>
-          <Grid item xs={6}>
-            <PlayerCard />
+            <PlayerCard player={this.props.profile} />
           </Grid>
         </Grid>
       </div>
@@ -32,10 +29,7 @@ PlayerProfile.enter = function onEnterApp(store) {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-  }
-}
+const mapStateToProps = state => ({ profile: state.profile })
 
 const mapDispatchToProps = dispatch => bindActionCreators({ fetchProfile }, dispatch)
 
