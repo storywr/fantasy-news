@@ -16,7 +16,7 @@ const styles = theme => ({
   container: {
     flexGrow: 1,
     position: 'relative',
-    height: 300,
+    height: 200,
   },
   suggestionsContainerOpen: {
     position: 'absolute',
@@ -109,7 +109,7 @@ export class PlayerSearch extends Component {
       ? []
       : this.props.players.filter(suggestion => {
           const keep =
-            count < 5 && suggestion.name.toLowerCase().slice(0, inputLength) === inputValue;
+            count < 3 && suggestion.name.toLowerCase().slice(0, inputLength) === inputValue;
   
           if (keep) {
             count += 1;
@@ -127,7 +127,8 @@ export class PlayerSearch extends Component {
 
   handleSuggestionsClearRequested = () => {
     this.setState({
-      suggestions: this.props.players,
+      value: '',
+      suggestions: [],
     })
   }
 
