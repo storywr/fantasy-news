@@ -20,6 +20,7 @@ import Grid from 'material-ui/Grid'
 import {connect} from 'react-redux'
 import { bindActionCreators, compose } from 'redux'
 import { fetchPlayers } from  './ducks/players.js'
+import { browserHistory } from 'react-router'
 
 const drawerWidth = 240;
 
@@ -61,62 +62,66 @@ const styles = theme => ({
 });
 
 export class App extends Component {
+  handleClick = () => {
+    browserHistory.push(`/`)
+  }
+
   render() {
-  const { classes } = this.props
-  return (
-    <div className={classes.root}>
-      <div className={classes.appFrame}>
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            <Typography type="title" color="inherit" noWrap>
-              Fantasy Football Scout
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          type="permanent"
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader} />
-          <Divider />
-          <List>
-            <ListItem button>
-              <ListItemText
-                primary='Players'
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary='News'
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary='Rankings'
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary='ADP'
-              />
-            </ListItem>
-          </List>
-        </Drawer>
-        <main className={classes.content}>
-          <Typography type="body1" noWrap>
-            <Grid container spacing={40}>
-              <Grid item xs={12}>
-                <PlayerSearch />
+    const { classes } = this.props
+    return (
+      <div className={classes.root}>
+        <div className={classes.appFrame}>
+          <AppBar className={classes.appBar}>
+            <Toolbar>
+              <Typography type="title" color="inherit" noWrap>
+                Fantasy Football Scout
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Drawer
+            type="permanent"
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <div className={classes.drawerHeader} />
+            <Divider />
+            <List>
+              <ListItem button onClick={this.handleClick}>
+                <ListItemText
+                  primary='Home'
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary='News'
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary='Rankings'
+                />
+              </ListItem>
+              <ListItem button>
+                <ListItemText
+                  primary='ADP'
+                />
+              </ListItem>
+            </List>
+          </Drawer>
+          <main className={classes.content}>
+            <Typography type="body1" noWrap>
+              <Grid container spacing={40}>
+                <Grid item xs={12}>
+                  <PlayerSearch />
+                </Grid>
               </Grid>
-            </Grid>
-            {this.props.children}
-          </Typography>
-        </main>
+              {this.props.children}
+            </Typography>
+          </main>
+        </div>
       </div>
-    </div>
-  )
+    )
   }
 }
 

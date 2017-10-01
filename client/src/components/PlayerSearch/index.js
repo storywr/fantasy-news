@@ -16,7 +16,7 @@ const styles = theme => ({
   container: {
     flexGrow: 1,
     position: 'relative',
-    height: 100,
+    height: 300,
   },
   suggestionsContainerOpen: {
     position: 'absolute',
@@ -36,7 +36,7 @@ const styles = theme => ({
   textField: {
     width: '100%'
   },
-});
+})
 
 export class PlayerSearch extends Component {
   state = {
@@ -60,7 +60,7 @@ export class PlayerSearch extends Component {
           ...other,
         }}
       />
-    );
+    )
   }
   
   renderSuggestion(suggestion, { query, isHighlighted }) {
@@ -83,7 +83,7 @@ export class PlayerSearch extends Component {
           })}
         </div>
       </MenuItem>
-    );
+    )
   }
   
   renderSuggestionsContainer(options) {
@@ -93,7 +93,7 @@ export class PlayerSearch extends Component {
       <Paper {...containerProps} square>
         {children}
       </Paper>
-    );
+    )
   }
   
   getSuggestionValue(suggestion) {
@@ -116,20 +116,20 @@ export class PlayerSearch extends Component {
           }
   
           return keep;
-        });
+        })
   }  
 
   handleSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: this.getSuggestions(value),
-    });
-  };
+    })
+  }
 
   handleSuggestionsClearRequested = () => {
     this.setState({
       suggestions: this.props.players,
-    });
-  };
+    })
+  }
 
   handleChange = (event, { newValue }) => {
     this.setState({
@@ -163,7 +163,7 @@ export class PlayerSearch extends Component {
           onChange: this.handleChange
         }}
       />
-    );
+    )
   }
 }
 
