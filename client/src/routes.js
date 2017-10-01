@@ -7,7 +7,7 @@ import PlayerProfile from './components/PlayerProfile/index'
 export default function (store) {
   return (
     <Route location='history' path='/' component={App} onEnter={App.enter(store)} >
-      <Route path="/players/:id" component={PlayerProfile} />
+      <Route path="/players/:id" component={PlayerProfile} onEnter={PlayerProfile.enter(store)} />
     </Route>
   )
 }
